@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+
     has_secure_password
+    has_many :posts
+    has_many :comments
   
     validates :username, presence: {message: "You do have a name, right?"}, uniqueness: true, length: { in: 4..20 }
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
